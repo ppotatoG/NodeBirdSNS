@@ -1,14 +1,21 @@
 import PropTypes from 'prop-types';
+import Head from 'next/head';
 import 'antd/dist/antd.css';
 
-const App = ({Compotent}) => {
+const NodeBird = ({ Component }) => {
     return (
-        <Compotent />
+        <>
+            <Head>
+                <meta charSet="utf-8"></meta>
+                <title>NodeBird</title>
+            </Head>
+            <Component/>
+        </>
     )
 };
 
-App.prototype = {
-    Compotent : PropTypes.elementType.isRequired,
+NodeBird.propTypes = {
+    Component : PropTypes.elementType.isRequired,
 }
 
-export default App;
+export default NodeBird;
