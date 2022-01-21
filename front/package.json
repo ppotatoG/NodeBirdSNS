@@ -1,23 +1,30 @@
 {
-  "name": "react-nodebird-sns",
+  "name": "nodebird-react-front",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "dev": "next"
   },
-  "author": "sohyun",
+  "author": "ahnYang",
   "license": "ISC",
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
-    "antd": "^4.18.3",
-    "next": "^12.0.8",
-    "prop-types": "^15.8.1",
-    "styled-components": "^5.3.3"
+    "@ant-design/icons": "^4.2.2",
+    "antd": "^4.6.6",
+    "babel-plugin-styled-components": "^2.0.2",
+    "next": "^12.0.7",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-slick": "^0.28.1",
+    "styled-components": "^5.2.0"
   },
   "devDependencies": {
-    "eslint": "^8.7.0",
-    "eslint-plugin-import": "^2.25.4",
-    "eslint-plugin-react-hooks": "^4.3.0"
-  }
+    "eslint": "^7.10.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.21.3",
+    "eslint-plugin-react-hooks": "^4.1.2",
+    "nodemon": "^2.0.4",
+    "webpack": "^5.65.0"
+  },
+  "description": ""
 }
