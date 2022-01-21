@@ -9,7 +9,7 @@ import UserProfile from '../components/UserProfile';
 import LoginForm from '../components/LoginForm';
 
 const SearchInput = styled(Input.Search)`
-    verticalAlign: 'middle';
+  vertical-align: middle;
 `;
 
 const AppLayout = ({children}) => {
