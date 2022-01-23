@@ -1,18 +1,12 @@
-import React, {useState, useCallback, useMemo} from 'react';
+import React, {useState, useCallback} from 'react';
 import {Form, Input, Button} from 'antd';
 import Link from 'next/link';
+import PropTypes from "prop-types";
+import useInput from "../hooks/useInput";
 
 const LoginForm = ({setIsLoggedIn}) => {
-    const [id, setId] = useState('');
-    const [password, setPassword] = useState('');
-
-    const onChangeId = useCallback((e) => {
-        setId(e.target.value);
-    }, []);
-    
-    const onChangePassword = useCallback((e) => {
-        setPassword(e.target.value);
-    }, []);
+    const [id, onChangeId] = useInput('');
+    const [password, onChangePassword] = useInput('');
 
     const onSubmitForm = useCallback(() => {
         console.log(id, password)
@@ -45,5 +39,10 @@ const LoginForm = ({setIsLoggedIn}) => {
         </Form>
     );
 }
+
+LoginForm.propTypes = {
+    setIsLoggedIn : PropTypes.func.isRequired,
+}
+
 
 export default LoginForm;
