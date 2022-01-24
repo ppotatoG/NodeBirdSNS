@@ -1,3 +1,5 @@
+import { HYDRATE } from "next-redux-wrapper";
+
 const initialState = {
     user : {
         isLoggedIn : false,
@@ -25,8 +27,12 @@ export const logoutAction = () => {
 
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
+        case 'HYDRATE' :
+            return {
+                ...state,
+                ...action.payload
+            }
         case 'LOG_IN' : 
-            state.name = 'kamja';
             return {
                 ...state,
                 user : {
@@ -36,15 +42,16 @@ const rootReducer = (state = initialState, action) => {
                 }
             }
         case 'LOG_OUT' : 
-        state.name = 'kamja';
-        return {
-            ...state,
-            user : {
-                ...state.user,
-                isLoggedIn: false,
-                user : null
+            return {
+                ...state,
+                user : {
+                    ...state.user,
+                    isLoggedIn: false,
+                    user : null
+                }
             }
-        }
+        default : 
+            return state;
     }
 };
 
