@@ -32,9 +32,6 @@ const changeNickname = (data) => {
     }
 }
 
-// changeNickname('sohyun');
-// store.dispatch(changeNickname('kamja'));
-
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
         case HYDRATE :

@@ -5,6 +5,10 @@ import reducer from '../reducers';
 
 const configureStore = () => {
     const store = createStore(reducer);
+    store.dispatch({
+        type: 'CHANGE_NICKNAME',
+        data: 'kamja',
+    })
     return store;
 };
 
