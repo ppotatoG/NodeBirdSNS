@@ -25,6 +25,16 @@ export const logoutAction = () => {
     }
 }
 
+const changeNickname = (data) => {
+    return  {
+        type : 'CHANGE_NICKNAME',
+        data
+    }
+}
+
+// changeNickname('sohyun');
+// store.dispatch(changeNickname('kamja'));
+
 const rootReducer = (state = initialState, action) => {
     switch(action.type) {
         case HYDRATE :
