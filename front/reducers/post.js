@@ -46,7 +46,7 @@ const dummyPost = {
     Comments: []
 }
 
-const reducer = (state = initialState, action) => {
+export default (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST :
             return{
@@ -61,5 +61,3 @@ const reducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export default reducer;

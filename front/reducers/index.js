@@ -4,13 +4,6 @@ import { combineReducers } from 'redux';
 import post from './post'
 import user from './user'
 
-const initialState = {
-    user : {
-    },
-    post : {
-    }
-};
-
 const rootReducer = combineReducers({
     index : (state = {}, action) => {
         switch(action.type) {

@@ -2,11 +2,11 @@ import PropTypes from 'prop-types';
 
 import { useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Button, Card, Popover } from 'antd';
-import { RetweetOutlined, HeartOutlined, HeartTwoTone, MessageOutlined, EllipsisOutlined } from '@ant-design/icons';
+import { Card, Button, Avatar, Popover, List, Comment } from 'antd';
+import { RetweetOutlined, HeartOutlined, HeartTwoTone, MessageOutlined, EllipsisOutlined} from '@ant-design/icons';
 
 import PostImages from './PostImages';
-import Avatar from 'antd/lib/avatar/avatar';
+import CommentForm from './CommentForm';
 
 const PostCard = ({ post }) => {
     const [liked, setLiked] = useState(false);
@@ -64,7 +64,7 @@ const PostCard = ({ post }) => {
                     </Popover>
                 ]}
             >
-                <Card
+                <Card.Meta
                     avatar={<Avatar>{post.User.nickname[0]}</Avatar>}
                     title={post.User.nickname}
                     description={post.content}
@@ -72,7 +72,23 @@ const PostCard = ({ post }) => {
             </Card>
 
             {commentFormOpened && (
-                <div>댓글부분</div>
+                <div>
+                    <CommentForm post={ post }/>
+                    <List
+                        header={`${post.Comments.length}의 댓글`}
+                        itemLayout="horizontal"
+                        dataSource={post.Comments}
+                        renderItem={(item) => (
+                            <li>
+                                <Comment
+                                    author={item.User.nickname}
+                                    avatar={<Avatar>{post.User.nickname[0]}</Avatar>}
+                                    content={item.content}
+                                />
+                            </li>
+                        )}
+                    />
+                </div>
             )}
             
             {/* <CommentForm></CommentForm>
@@ -83,13 +99,13 @@ const PostCard = ({ post }) => {
 
 PostCard.propTypes = {
     post: PropTypes.shape({
-      id: PropTypes.number,
-      User: PropTypes.object,
-      content: PropTypes.string,
-      createdAt: PropTypes.object,
-      Comments: PropTypes.arrayOf(PropTypes.any),
-      Images: PropTypes.arrayOf(PropTypes.any),
+        id: PropTypes.number,
+        User: PropTypes.object,
+        content: PropTypes.string,
+        createdAt: PropTypes.object,
+        Comments: PropTypes.arrayOf(PropTypes.any),
+        Images: PropTypes.arrayOf(PropTypes.any),
     }),
-  };
+};
 
 export default PostCard;
