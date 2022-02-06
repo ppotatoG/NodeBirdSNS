@@ -1,13 +1,20 @@
-import { useCallback, useState } from 'react';
-
 import PropTypes from 'prop-types';
+
+import { useCallback, useState } from 'react';
 import { PlusOutlined } from '@ant-design/icons';
+
+import ImagesZoom from './ImagesZoom';
 
 const PostImages = ({ images }) => {
     const [showImagesZoom, setShowImagesZoom] = useState(false);
+
     const onZoom = useCallback(() => {
         setShowImagesZoom(true);
-    });
+    }, []);
+
+    const onClose = useCallback(() => {
+        setShowImagesZoom(false);
+      }, []);
 
     if(images.length === 1) {
         return (
@@ -15,7 +22,7 @@ const PostImages = ({ images }) => {
                 <img 
                     src={images[0].src}
                     alt={images[0].src}
-                    onClick={ onZoom }
+                    onClick={onZoom}
                     role="presentation"
                     style={{ 
                         maxHeight: "320px",
@@ -23,6 +30,7 @@ const PostImages = ({ images }) => {
                         margin: "0 auto"
                     }}
                 />
+                { showImagesZoom && <ImagesZoom images={images} onClose={onClose} /> }
             </>
         )
     }
@@ -33,7 +41,7 @@ const PostImages = ({ images }) => {
                 <img 
                     src={images[0].src}
                     alt={images[0].src}
-                    onClick={ onZoom }
+                    onClick={onZoom}
                     role="presentation"
                     style={{
                         display: "inline-block",
@@ -43,13 +51,14 @@ const PostImages = ({ images }) => {
                 <img 
                     src={images[1].src}
                     alt={images[1].src}
-                    onClick={ onZoom }
+                    onClick={onZoom}
                     role="presentation"
                     style={{
                         display: "inline-block",
                         width: "50%"
                     }}
                 />
+                { showImagesZoom && <ImagesZoom images={images} onClose={onClose} /> }
             </>
         )
     }
@@ -60,12 +69,12 @@ const PostImages = ({ images }) => {
                 <img 
                     src={images[0].src}
                     alt={images[0].src}
-                    onClick={ onZoom }
+                    onClick={onZoom}
                     role="presentation"
                     width="50%"
                 />
                 <div
-                    onClick={ onZoom }
+                    onClick={onZoom}
                     role="presentation"
                     style={{
                         display: "inline-block",
