@@ -1,16 +1,20 @@
-import AppLayout from "../components/AppLayout";
-import {Form, Input, Button, Checkbox} from 'antd';
-import Head from 'next/head';
-import { useCallback, useState} from "react";
-import useInput from "../hooks/useInput";
+import { Form, Input, Button, Checkbox } from 'antd';
+import { useCallback, useState } from 'react';
+
+import useInput from '../hooks/useInput';
+import AppLayout from '../components/AppLayout';
 
 const signup = () => {
     const [id, onChangeId] = useInput('');
+
     const [nickname, onChangeNickname] = useInput('');
+    
     const [password, onChangePassword] = useInput('');
     const [passwordCheck, setPasswordCheck] = useState('');
-    const [term, setTerm] = useState(false);
+    
     const [passwordError, setPasswordError] = useState(false);
+    
+    const [term, setTerm] = useState(false);
     const [termError, setTermError] = useState(false);
   
     const onSubmit = useCallback(() => {
@@ -64,12 +68,12 @@ const signup = () => {
                         required
                         onChange={onChangePasswordCheck}
                     />
-                    {passwordError && <div style={{color: 'red'}}>비밀번호가 일치하지 않습니다.</div>}
+                    {passwordError && <div style={{color: "red"}}>비밀번호가 일치하지 않습니다.</div>}
                 </div>
 
                 <div>
                     <Checkbox name="user-term" checked={term} onChange={onChangeTerm}>약관에 동의합니다.</Checkbox>
-                    {termError && <div style={{color: 'red'}}>약관에 동의하셔야 합니다.</div>}
+                    {termError && <div style={{color: "red"}}>약관에 동의하셔야 합니다.</div>}
                 </div>
 
                 <div style={{ marginTop: 10 }}>

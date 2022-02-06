@@ -4,7 +4,7 @@ import { Button, Form, Input } from 'antd';
 import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 
-import useInput from "../hooks/useInput";
+import useInput from '../hooks/useInput';
 
 const ConmmentForm = ({post}) => {
     const id = useSelector((state) => state.user.me?.id);

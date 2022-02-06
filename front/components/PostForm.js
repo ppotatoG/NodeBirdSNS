@@ -5,7 +5,6 @@ import { addPost } from '../reducers/post';
 
 const postForm = () => {
     const { imagePaths, postAdded } = useSelector(state => state.post);
-    // console.log(imagePaths)
     
     const [text, setText] = useState('');
     
@@ -32,8 +31,8 @@ const postForm = () => {
 
     return (
         <Form 
-            style={{ margin: '10px 0 20px' }} 
-            encType='multipart/form-data' 
+            style={{ margin: "10px 0 20px" }} 
+            encType="multipart/form-data" 
             onFinish={onSubmit}>
 
             <Input.TextArea 
@@ -47,13 +46,13 @@ const postForm = () => {
                 <Input type="file" multiple hidden ref={imageInput} />
                 <Button onClick={onClickImageUpload}>이미지 업로드</Button>
                 {/* <Button >이미지 업로드</Button> */}
-                <Button type="primary" style={{ float: 'right' }} htmlType="submit">짹짹</Button>
+                <Button type="primary" style={{ float: "right" }} htmlType="submit">짹짹</Button>
             </div>
 
             <div>
                 {/* {imagePaths.map((val) => {
-                    <div key={val} style={{ display: 'inline-block' }}>
-                        <img src={val} style={{ width: '200px' }} alt={val} />
+                    <div key={val} style={{ display: "inline-block" }}>
+                        <img src={val} style={{ width: "200px" }} alt={val} />
                         <div>
                             <Button>이미지</Button>
                         </div>

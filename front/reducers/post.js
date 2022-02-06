@@ -27,13 +27,13 @@ export const initialState = {
     }],
     ImagePaths: [],
     postAdded: false
-}
+};
 
 const ADD_POST = 'ADD_POST';
 
 export const addPost = {
     type: ADD_POST
-}
+};
 
 const dummyPost = {
     id: 2,
@@ -44,7 +44,7 @@ const dummyPost = {
     },
     Images: [],
     Comments: []
-}
+};
 
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -56,8 +56,8 @@ export default (state = initialState, action) => {
                     ...state.mainPosts
                 ],
                 postAdded: true
-            }
+            };
         default : 
             return state;
     }
-}
+};

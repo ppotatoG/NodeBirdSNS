@@ -1,13 +1,13 @@
-import React, {useState} from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
-import { Menu, Input, Row, Col } from "antd";
+import PropTypes from 'prop-types';
+import Link from 'next/link';
+
+import { Menu, Input, Row, Col } from 'antd';
 import {useSelector} from 'react-redux';
 
-import UserProfile from "./UserProfile";
-import LoginForm from "./LoginForm";
+import UserProfile from './UserProfile';
+import LoginForm from './LoginForm';
 
-const AppLayout = ({children}) => {
+const AppLayout = ({ children }) => {
     const { isLoggedIn } = useSelector((state) => state.user);
 
     return (
