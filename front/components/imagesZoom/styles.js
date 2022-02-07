@@ -15,8 +15,8 @@ export const Overlay = styled.div`
     z-index: 999;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100%;
+    height: 100%;
 `;
 
 export const Header = styled.header`
@@ -36,7 +36,7 @@ export const Header = styled.header`
 
 export const SlickWrapper = styled.div`
     height: calc(100% - 44px);
-    background: #090909;
+    background: rgba(0, 0, 0, .8);
 `;
 
 export const CloseBtn = styled(CloseOutlined)`
