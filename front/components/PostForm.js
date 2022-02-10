@@ -4,7 +4,7 @@ import { Form, Input, Button } from 'antd';
 import { addPost } from '../reducers/post';
 
 const postForm = () => {
-    const { imagePaths, postAdded } = useSelector(state => state.post);
+    const { ImagePaths, postAdded } = useSelector(state => state.post);
     
     const [text, setText] = useState('');
     
@@ -43,21 +43,20 @@ const postForm = () => {
             />
 
             <div>
-                <Input type="file" multiple hidden ref={imageInput} />
+                <input type="file" multiple hidden ref={imageInput} />
                 <Button onClick={onClickImageUpload}>이미지 업로드</Button>
-                {/* <Button >이미지 업로드</Button> */}
                 <Button type="primary" style={{ float: "right" }} htmlType="submit">짹짹</Button>
             </div>
 
             <div>
-                {/* {imagePaths.map((val) => {
+                {ImagePaths.map((val) => {
                     <div key={val} style={{ display: "inline-block" }}>
                         <img src={val} style={{ width: "200px" }} alt={val} />
                         <div>
                             <Button>이미지</Button>
                         </div>
                     </div>
-                })} */}
+                })}
             </div>
         </Form>
     )
