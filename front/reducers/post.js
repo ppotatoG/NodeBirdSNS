@@ -7,11 +7,11 @@ export const initialState = {
         },
         content: '첫 번째 게시글 #해시태그 #익스프레스',
         Images: [{
-            src : 'http://placehold.it/320x320.png/000/ffffff?text=1'
+            src : 'https://placeimg.com/320/320/animals'
         }, {
-            src : 'http://placehold.it/320x320.png/000/ffffff?text=2'
+            src : 'https://placeimg.com/320/320/arch'
         }, {
-            src : 'http://placehold.it/320x320.png/000/ffffff?text=3'
+            src : 'https://placeimg.com/320/320/nature'
         }],
         Comments: [{
             User: {
