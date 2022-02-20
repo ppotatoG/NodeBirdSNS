@@ -11,6 +11,10 @@ export const initialState = {
     signUpDone : false,
     signUpError : null,
 
+    changeNicknameLoading : false, // 닉네임 변경
+    changeNicknameDone : false,
+    changeNicknameError : null,    
+
     me : null,
     signUpData : {},
     loginData : {}
@@ -35,6 +39,10 @@ export const FOLLW_FAILURE = 'FOLLW_FAILURE';
 export const UNFOLLW_REQUEST = 'UNFOLLW_REQUEST'; 
 export const UNFOLLW_SUCCESS = 'UNFOLLW_SUCCESS'; 
 export const UNFOLLW_FAILURE = 'UNFOLLW_FAILURE'; 
+
+export const CHANGE_NICKNAME_REQUEST = 'CHANGE_NICKNAME_REQUEST'; 
+export const CHANGE_NICKNAME_SUCCESS = 'CHANGE_NICKNAME_SUCCESS'; 
+export const CHANGE_NICKNAME_FAILURE = 'CHANGE_NICKNAME_FAILURE'; 
 
 const dummyUser = (data) => ({
     ...data,
@@ -127,6 +135,28 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 signUpLoading : false,
                 signUpError: action.error
+            };
+            
+        case CHANGE_NICKNAME_REQUEST : 
+            return {
+                ...state ,
+                changeNicknameLoading : true, 
+                changeNicknameDone : false,
+                changeNicknameError : null,
+            };
+        
+        case CHANGE_NICKNAME_SUCCESS : 
+            return {
+                ...state,
+                changeNicknameLoading : false,
+                changeNicknameDone: true
+            };
+
+        case CHANGE_NICKNAME_FAILURE : 
+            return {
+                ...state,
+                changeNicknameLoading : false,
+                changeNicknameError: action.error
             };
 
         default : 

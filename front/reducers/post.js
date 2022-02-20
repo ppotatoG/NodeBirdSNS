@@ -1,3 +1,5 @@
+import shortId from 'shortid';
+
 export const initialState = {
     mainPosts: [{
         id: 1,
@@ -28,7 +30,10 @@ export const initialState = {
     ImagePaths : [],
     addPostLoading : false,
     addPostDone : false,
-    addPostError : false
+    addPostError : false,
+    addCommentLoading : false,
+    addCommentDone : false,
+    addCommentError : false
 };
 
 export const ADD_POST_REQUEST = 'ADD_POST_REQUEST';
@@ -49,16 +54,16 @@ export const addComment = (data) => ({
     data
 });
 
-const dummyPost = {
-    id: 2,
-    content: '더미데이터입니다.',
+const dummyPost = (data) => ({
+    id: shortId.generate(),
+    content: data,
     User: {
         id: 1,
         nickname: '제로초'
     },
     Images: [],
     Comments: []
-};
+});
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -70,10 +75,10 @@ const reducer = (state = initialState, action) => {
                 addPostError : null,
             }
         case ADD_POST_SUCCESS :
-            return{
+            return {
                 ...state,
                 mainPosts: [
-                    dummyPost,
+                    dummyPost(action.data),
                     ...state.mainPosts
                 ],
                 addPostLoading : false,
@@ -83,7 +88,7 @@ const reducer = (state = initialState, action) => {
             return {
                 addPostLoading : false,
                 addPostError : action.error
-            }
+            };
 
         case ADD_COMMENT_REQUEST :
             return {
@@ -91,9 +96,14 @@ const reducer = (state = initialState, action) => {
                 addCommentLoading : true,
                 addCommentDone : false,
                 addCommentError : null,
-            }
+            };
         case ADD_COMMENT_SUCCESS :
-            return{
+            const postIndex = staet.mainPosts.findIndex((val) => val.id === action.data.postId);
+            const post = state.mainPosts[postIndex];
+            const commemts = [dummyComment(action.data.content), ...post.Comments];
+            const mainPosts = [...state.mainPosts];
+
+            return {
                 ...state,
                 mainComments: [
                     dummyComment,
@@ -106,7 +116,7 @@ const reducer = (state = initialState, action) => {
             return {
                 addCommentLoading : false,
                 addCommentError : action.error
-            }
+            };
 
         default : 
             return state;
