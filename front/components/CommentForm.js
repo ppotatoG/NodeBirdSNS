@@ -7,43 +7,43 @@ import { useSelector, useDispatch } from 'react-redux';
 import useInput from '../hooks/useInput';
 import { ADD_COMMENT_REQUEST } from '../reducers/post';
 
-const ConmmentForm = ({post}) => {
+const CommentForm = ({ post }) => {
     const id = useSelector((state) => state.user.me?.id);
-    const { addCommentDone } = useSelector((state) => state.post);
+    const { addCommentDone, addCommentLoading } = useSelector((state) => state.post);
     const dispatch = useDispatch();
 
-    const [commentText, onChangecommentText, setCommentText] = useInput('');
-
+    const [commentText, onChangeCommentText, setCommentText] = useInput('');
+  
     useEffect(() => {
-        if(addCommentDone) {
-            setCommentText('')
-        }
+      if (addCommentDone) {
+        setCommentText('');
+      }
     }, [addCommentDone]);
 
     const onSubmitComment = useCallback(() => {
-        console.log(post.id, commentText);
         dispatch({
-            type : ADD_COMMENT_REQUEST,
-            data : { 
+            type: ADD_COMMENT_REQUEST,
+            data: { 
                 content: commentText, 
-                postId : post.id, 
-                userId : id 
-            }
+                userId: id, 
+                postId: post.id 
+            },
         });
-    }, [commentText, id]);
+      }, [commentText, id]);
 
     return (
-        <Form onFinish={onSubmitComment} >
-            <Form.Item style={{ position: "relative", margin: 0 }}>
-                <Input.TextArea
-                    value={commentText}
-                    onChange={onChangecommentText}
-                    rows={4}
+        <Form onFinish={onSubmitComment}>
+            <Form.Item style={{ position: 'relative', margin: 0 }}>
+                <Input.TextArea 
+                    rows={4} 
+                    value={commentText} 
+                    onChange={onChangeCommentText} 
                 />
                 <Button
-                    style={{ position: "absolute", right: 0, bottom: -40 }}
+                    style={{ position: 'absolute', right: 0, bottom: -40 }}
                     type="primary"
                     htmlType="submit"
+                    loading={addCommentLoading}
                 >
                     삐약
                 </Button>

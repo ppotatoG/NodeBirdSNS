@@ -14,7 +14,7 @@ const PostImages = ({ images }) => {
 
     const onClose = useCallback(() => {
         setShowImagesZoom(false);
-      }, []);
+    }, []);    
 
     if(images.length === 1) {
         return (
@@ -94,7 +94,9 @@ const PostImages = ({ images }) => {
 }
 
 PostImages.propTypes = {
-    images: PropTypes.arrayOf(PropTypes.object)
-}
-
-export default PostImages;
+    images: PropTypes.arrayOf(PropTypes.shape({
+        src: PropTypes.string,
+    })).isRequired,
+};
+  
+  export default PostImages;
