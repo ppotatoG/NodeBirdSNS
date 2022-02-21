@@ -7,7 +7,7 @@ import NicknameEditForm from '../components/NicknameEditForm';
 import AppLayout from '../components/AppLayout';
 import FollowList from '../components/FollowList';
 
-const profile = () => {
+const Profile = () => {
     const { me } = useSelector((state) => state.user);
 
     useEffect(() => {

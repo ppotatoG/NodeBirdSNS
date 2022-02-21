@@ -13,8 +13,6 @@ const LoginForm = () => {
     const [email, onChangeEmail] = useInput('');
     const [password, onChangePassword] = useInput('');
 
-    const { logInLoading } = useSelector((state) => state.user);
-
     const onSubmitForm = useCallback(() => {
         console.log(email, password);
         dispatch({
