@@ -1,16 +1,35 @@
-const http = require('http');
+const express = require('express');
+const postRouter = require('./routes/post');
 
-const server = http.createServer((req, res) => {
-    console.log(req.url, req.method);
+const app = express();
 
-    res.write('<h1>hello node</h1>');
-    res.write('<h2>hello node</h2>');
-    res.write('<h3>hello node</h3>');
-    res.write('<h4>hello node</h4>');
+app.get('/', (req, res) => {
+    res.send('hello express');
+})
 
-    res.end('<h5>hello node</h5>');
-});
+app.get('/', (req, res) => {
+    res.send('hello api');
+})
 
-server.listen(3065, () => {
+app.get('/posts', (req, res) => {
+    res.json([
+        {
+            id : 1,
+            content : 'hello1'
+        },
+        {
+            id : 2,
+            content : 'hello2'
+        },
+        {
+            id : 3,
+            content : 'hello3'
+        }
+    ])
+})
+
+app.use('/post', postRouter)
+
+app.listen(3065, () => {
     console.log('서버 실행중');
 });
