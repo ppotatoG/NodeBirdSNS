@@ -64,7 +64,7 @@ const Signup = () => {
             </Head>
             <Form onFinish={onSubmit} style={{ padding: 10 }}>
                 <div>
-                    <label htmlFor="user-email">아이디</label>
+                    <label htmlFor="user-email">이메일</label>
                     <br />
                     <Input name="user-email" value={email} required onChange={onChangeEmail} />
                 </div>
@@ -100,7 +100,7 @@ const Signup = () => {
                 </div>
 
                 <div style={{ marginTop: 10 }}>
-                    <Button type="primary" htmlType="submit" loading={signUpLoading}>가입하기</Button>
+                    <Button type="primary" htmlType="submit" loading={isSigningUp}>가입하기</Button>
                 </div>
             </Form>
         </AppLayout>

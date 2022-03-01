@@ -3,6 +3,8 @@ const express = require('express');
 const postRouter = require('./routes/post');
 const userRouter = require('./routes/user');
 
+const app = express();
+
 const db = require('./models');
 db.sequelize.sync()
     .then(() => {
@@ -14,8 +16,6 @@ app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }));
-
-const app = express();
 
 app.get('/', (req, res) => {
     res.send('hello express');
