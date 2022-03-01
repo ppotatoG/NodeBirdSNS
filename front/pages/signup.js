@@ -20,6 +20,20 @@ const Signup = () => {
     const [password, onChangePassword] = useInput('');
     const dispatch = useDispatch();
     const { isSigningUp, me } = useSelector((state) => state.user);
+
+    const { signUpLoading, signUpDone, signUpError } = useSelector((state) => state.user);
+    
+    useEffect(() => {
+        if(signUpDone) {
+            Router.push('/');
+        }
+    }, [signUpDone]);
+
+    useEffect(() => {
+        if(signUpError) {
+            alert(signUpError);
+        }
+    }, [signUpError]);
   
     useEffect(() => {
         if (me) {
