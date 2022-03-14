@@ -19,13 +19,18 @@ const Signup = () => {
     const [nick, onChangeNick] = useInput('');
     const [password, onChangePassword] = useInput('');
     const dispatch = useDispatch();
-    const { isSigningUp, me } = useSelector((state) => state.user);
 
-    const { signUpLoading, signUpDone, signUpError } = useSelector((state) => state.user);
+    const { signUpLoading, signUpDone, signUpError, me } = useSelector((state) => state.user);
     
     useEffect(() => {
+        if (me && me.id) {
+            Router.replace('/');
+        }
+    }, [me && me.id]);
+
+    useEffect(() => {
         if(signUpDone) {
-            Router.push('/');
+            Router.replace('/');
         }
     }, [signUpDone]);
 
@@ -114,7 +119,7 @@ const Signup = () => {
                 </div>
 
                 <div style={{ marginTop: 10 }}>
-                    <Button type="primary" htmlType="submit" loading={isSigningUp}>가입하기</Button>
+                    <Button type="primary" htmlType="submit" loading={signUpLoading}>가입하기</Button>
                 </div>
             </Form>
         </AppLayout>
