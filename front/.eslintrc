@@ -13,9 +13,7 @@
     "es6": true
   },
   "extends": [
-    "airbnb",
-    "some-other-config-you-use", 
-    "prettier" 
+    "airbnb"
   ],
   "plugins": [
     "import",
